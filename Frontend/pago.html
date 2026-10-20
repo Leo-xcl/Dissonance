@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dissonance, tienda de discos en la Riviera Nayarit" />
+    <title>Finalizar compra · Dissonance</title>
+    <link rel="stylesheet" href="CSS/estilos.css" />
+  </head>
+  <body>
+    <header class="site-header wrap"></header>
+    <main class="wrap page">
+      <h1>Finalizar compra</h1>
+      <form id="form-pago" class="two-col" novalidate>
+        <div>
+          <section class="panel form-panel">
+            <h2>1 / ¿Cómo quieres recibir tu pedido?</h2>
+            <div class="choice-grid">
+              <label class="choice">
+                <input type="radio" name="entrega" value="pickup" checked />
+                <span>
+                  <b>Recoger en tienda</b>
+                  <small>Recoger en la tienda · sin costo de envío</small>
+                </span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="entrega" value="shipping" />
+                <span>
+                  <b>Envío a domicilio</b>
+                  <small>El costo se calcula con tu código postal</small>
+                </span>
+              </label>
+            </div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="contacto">Nombre de contacto</label>
+                <input id="contacto" autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="tel">Teléfono de contacto</label>
+                <input id="tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10 dígitos" />
+              </div>
+            </div>
+            <div id="campos-envio" hidden>
+              <div class="field">
+                <label for="direccion">Calle y número</label>
+                <input id="direccion" placeholder="Calle Hidalgo 245" />
+              </div>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="colonia">Colonia</label>
+                  <input id="colonia" placeholder="Centro" />
+                </div>
+                <div class="field">
+                  <label for="cp">Código postal</label>
+                  <input id="cp" inputmode="numeric" maxlength="5" placeholder="63735" />
+                </div>
+                <div class="field">
+                  <label for="ciudad">Ciudad</label>
+                  <input id="ciudad" placeholder="Bahía de Banderas" />
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="panel form-panel">
+            <h2>2 / Datos de pago</h2>
+            <div class="choice-grid">
+              <label class="choice">
+                <input type="radio" name="pago" value="card" checked />
+                <span>
+                  <b>Tarjeta</b>
+                  <small>Pago simulado, sin cobro real</small>
+                </span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="pago" value="store" />
+                <span>
+                  <b>Pago en tienda</b>
+                  <small>Recibirás un código para pagar en caja</small>
+                </span>
+              </label>
+            </div>
+            <div id="campos-tarjeta">
+              <div class="field">
+                <label for="titular">Nombre en la tarjeta</label>
+                <input id="titular" autocomplete="cc-name" placeholder="Como aparece en la tarjeta" />
+              </div>
+              <div class="field">
+                <label for="tarjeta">Número de tarjeta</label>
+                <input id="tarjeta" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="19" />
+              </div>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="vence">Vencimiento</label>
+                  <input id="vence" autocomplete="cc-exp" placeholder="MM/AA" maxlength="5" />
+                </div>
+                <div class="field">
+                  <label for="cvv">Código de seguridad</label>
+                  <input id="cvv" type="password" inputmode="numeric" autocomplete="cc-csc" placeholder="CVV" maxlength="3" />
+                </div>
+              </div>
+            </div>
+            <p class="muted" id="nota-pago"></p>
+          </section>
+        </div>
+        <aside class="panel summary">
+          <h2>Resumen del pedido</h2>
+          <div id="resumen-items"></div>
+          <hr />
+          <p>
+            <span>Subtotal</span>
+            <b id="res-subtotal"></b>
+          </p>
+          <p>
+            <span>Envío</span>
+            <span id="res-envio">Sin costo</span>
+          </p>
+          <p class="total">
+            <span>Total</span>
+            <b id="res-total"></b>
+          </p>
+          <p id="mensaje" class="error" role="alert"></p>
+          <button type="submit" class="button primary full" id="btn-confirmar">Confirmar pedido</button>
+          <small>Pago simulado: no se realiza ningún cobro real.</small>
+        </aside>
+      </form>
+    </main>
+    <footer class="site-footer wrap"></footer>
+    <script src="JS/comun.js"></script>
+    <script src="JS/encabezado.js"></script>
+    <script src="JS/pago.js"></script>
+  </body>
+</html>

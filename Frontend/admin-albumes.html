@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dissonance, tienda de discos en la Riviera Nayarit" />
+    <title>Álbumes · Panel · Dissonance</title>
+    <link rel="stylesheet" href="CSS/estilos.css" />
+  </head>
+  <body>
+    <header class="site-header wrap"></header>
+    <main class="wrap page">
+      <div class="page-heading">
+        <div>
+          <h1>Álbumes</h1>
+          <p class="muted">Ocultar un álbum lo quita del catálogo; los pedidos anteriores no se afectan.</p>
+        </div>
+        <a class="button primary" href="album-form.html">＋ Agregar álbum</a>
+      </div>
+      <div class="field">
+        <label for="buscar-album">Buscar por álbum o artista</label>
+        <input id="buscar-album" type="search" />
+      </div>
+      <p class="muted" id="aviso-catalogo" role="status"></p>
+      <div class="table-wrap" id="tabla-catalogo"><p class="muted">Cargando catálogo…</p></div>
+      <div class="ver-mas-caja">
+        <small class="muted" id="contador-admin"></small>
+        <button type="button" class="button secondary" id="ver-mas-admin" style="display: none">Ver más</button>
+      </div>
+    </main>
+    <footer class="site-footer wrap"></footer>
+    <script src="JS/comun.js"></script>
+    <script src="JS/encabezado.js"></script>
+    <script src="JS/admin-albumes.js"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dissonance, tienda de discos en la Riviera Nayarit" />
+    <title>Iniciar sesión · Dissonance</title>
+    <link rel="stylesheet" href="CSS/estilos.css" />
+  </head>
+  <body>
+    <!-- Sin encabezado a propósito: esta pantalla solo trae el logotipo para volver al catálogo -->
+    <main class="wrap auth-page">
+      <section class="auth-layout">
+        <div class="auth-copy">
+          <a class="brand" href="catalogo.html">DISSONANCE</a>
+          <h1>Una tienda para escuchar a la antigua.</h1>
+          <p class="muted">Vinilo, CD y cassette. Encuentra discos que vale la pena conservar.</p>
+        </div>
+        <section class="panel auth-panel" aria-labelledby="titulo-login">
+          <h2 id="titulo-login">Qué bueno verte.</h2>
+          <p class="muted">Deja una reseña, haz tu pedido o retoma uno anterior.</p>
+          <form id="form-login">
+            <div class="field">
+              <label for="correo">Correo electrónico</label>
+              <input type="email" id="correo" placeholder="tu@ejemplo.com" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="contrasena">Contraseña</label>
+              <input type="password" id="contrasena" placeholder="Tu contraseña" autocomplete="current-password" required />
+            </div>
+            <p id="mensaje" class="error" role="alert"></p>
+            <button type="submit" class="button primary full">Iniciar sesión</button>
+          </form>
+          <p class="muted">¿Primera vez por aquí? <a href="registro.html">Crear cuenta</a></p>
+          <p class="muted">¿Solo quieres explorar? <a href="catalogo.html">Ver catálogo</a></p>
+        </section>
+      </section>
+    </main>
+    <script src="JS/comun.js"></script>
+    <script src="JS/login.js"></script>
+  </body>
+</html>

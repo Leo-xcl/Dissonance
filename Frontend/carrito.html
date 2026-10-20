@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dissonance, tienda de discos en la Riviera Nayarit" />
+    <title>Tu carrito · Dissonance</title>
+    <link rel="stylesheet" href="CSS/estilos.css" />
+  </head>
+  <body>
+    <header class="site-header wrap"></header>
+    <main class="wrap page">
+      <div class="page-heading">
+        <div>
+          <h1 id="titulo-carrito">Tu carrito</h1>
+          <p class="muted">Revisa las cantidades antes de pagar; los precios se confirman con la tienda en este momento.</p>
+        </div>
+      </div>
+      <div class="two-col">
+        <section class="cart-list" id="lista-carrito" aria-live="polite">
+          <p class="muted">Cargando carrito...</p>
+        </section>
+        <aside class="panel summary">
+          <h2>Tu selección</h2>
+          <p>
+            <span id="res-unidades">Subtotal</span>
+            <b id="res-subtotal"></b>
+          </p>
+          <p>
+            <span>Entrega</span>
+            <span>Se elige en el siguiente paso</span>
+          </p>
+          <hr />
+          <p class="total">
+            <span>Subtotal estimado</span>
+            <b id="res-total"></b>
+          </p>
+          <a class="button primary full" id="btn-pago" href="pago.html">Continuar al pago</a>
+          <small>Para confirmar tu compra tendrás que iniciar sesión.</small>
+        </aside>
+      </div>
+    </main>
+    <footer class="site-footer wrap"></footer>
+    <script src="JS/comun.js"></script>
+    <script src="JS/encabezado.js"></script>
+    <script src="JS/carrito.js"></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dissonance, tienda de discos en la Riviera Nayarit" />
+    <title>Mi cuenta · Dissonance</title>
+    <link rel="stylesheet" href="CSS/estilos.css" />
+  </head>
+  <body>
+    <header class="site-header wrap"></header>
+    <main class="wrap page">
+      <div class="profile-heading">
+        <div class="avatar" id="avatar"></div>
+        <div>
+          <h1 id="perfil-nombre">Mi cuenta</h1>
+          <p class="muted" id="perfil-desde"></p>
+        </div>
+      </div>
+
+      <section id="pedidos">
+        <h2>Mis pedidos</h2>
+        <div class="table-wrap" id="contenido-pedidos"><p class="muted">Cargando tus pedidos…</p></div>
+      </section>
+
+      <form class="panel form-panel content-section" id="form-cuenta">
+        <h2>Información personal</h2>
+        <div class="field-grid">
+          <div class="field">
+            <label for="nombre">Nombre completo</label>
+            <input id="nombre" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" type="tel" inputmode="numeric" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="correo">Correo electrónico</label>
+          <input id="correo" type="email" autocomplete="email" />
+        </div>
+        <hr />
+        <h2>Seguridad</h2>
+        <div class="field">
+          <label for="contrasena-actual">Contraseña actual</label>
+          <input id="contrasena-actual" type="password" autocomplete="current-password" placeholder="Solo si vas a cambiarla" />
+        </div>
+        <div class="field">
+          <label for="contrasena">Nueva contraseña</label>
+          <input id="contrasena" type="password" autocomplete="new-password" placeholder="Dejar en blanco para conservarla" />
+        </div>
+        <p id="mensaje" role="status"></p>
+        <button class="button primary">Guardar cambios</button>
+      </form>
+    </main>
+    <footer class="site-footer wrap"></footer>
+    <script src="JS/comun.js"></script>
+    <script src="JS/encabezado.js"></script>
+    <script src="JS/mi-cuenta.js"></script>
+  </body>
+</html>

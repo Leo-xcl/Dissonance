@@ -1,0 +1,22 @@
+{
+  "name": "dissonance-lite",
+  "version": "1.0.0",
+  "description": "Tienda de discos: Node.js + Express + SQLite, con estructura MVC",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "sembrar": "node scripts/sembrar.js",
+    "admin": "node scripts/crear-admin.js",
+    "test": "node --test pruebas/api.test.js"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.3",
+    "better-sqlite3-session-store": "^0.1.0",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
+  }
+}

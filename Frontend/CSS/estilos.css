@@ -1,0 +1,1063 @@
+/* Dissonance · estilos compartidos por todas las páginas.
+   Orden: fuente → colores → base → componentes → una sección por pantalla → pantallas chicas. */
+
+/* Fuente del texto (DM Sans, solo los grosores que se usan). Va aquí y no en cada HTML para no repetirla 12 veces.
+   Si no hay internet, el navegador usa "Segoe UI" o Arial. */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;800&display=swap");
+
+/* ---------- Colores (las portadas son lo único con color; la interfaz se queda quieta) ---------- */
+:root {
+  --fondo: #10120f;
+  --superficie: #1b201c;
+  --borde: #363d36;
+  --texto: #f1eee4;
+  --secundario: #a9ada5;
+  --verde: #3d784b; /* botones y marca */
+  --verde-texto: #75a87c; /* verde SOLO para texto: el de marca no llega al contraste mínimo de 4.5:1 */
+  --laton: #b88950;
+  --campo: #0c0f0d;
+  --rojo-fondo: #4a2c2c;
+  --rojo-texto: #f0b4b4;
+}
+
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+}
+html {
+  color-scheme: dark;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--fondo);
+  color: var(--texto);
+  font: 15px/1.5 "DM Sans", "Segoe UI", Arial, sans-serif;
+}
+a {
+  color: var(--verde-texto);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+/* Campos de texto (las casillas y los botones de opción conservan su forma) */
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--campo);
+  color: var(--texto);
+}
+textarea {
+  resize: vertical;
+}
+.wrap {
+  width: min(1200px, calc(100% - 48px));
+  margin-inline: auto;
+}
+.page {
+  padding-top: 24px;
+}
+.page h1 {
+  margin: 0 0 10px;
+  font-size: 34px;
+  line-height: 1.15;
+}
+h2 {
+  font-size: 21px;
+  line-height: 1.25;
+}
+.muted,
+small {
+  color: var(--secundario);
+}
+.error {
+  color: #e07a5f;
+}
+.serif {
+  font-family: Georgia, "Times New Roman", serif;
+}
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--verde-texto);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+/* Enlace "Saltar al contenido": solo aparece al navegar con el teclado */
+.saltar {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--verde);
+  color: #fff;
+  font-weight: 700;
+}
+.saltar:focus {
+  left: 16px;
+}
+
+/* ---------- Encabezado y pie ---------- */
+.site-header {
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.brand {
+  color: var(--verde-texto);
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.search {
+  width: min(350px, 35vw);
+}
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.site-header nav a {
+  color: var(--secundario);
+  font-size: 14px;
+}
+.site-header nav a[aria-current="page"] {
+  color: var(--texto);
+  box-shadow: inset 0 -2px 0 var(--verde);
+}
+.site-header nav .carrito-icono {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--texto);
+}
+.contador-carrito {
+  min-width: 18px;
+  padding: 0 5px;
+  border-radius: 99px;
+  background: var(--verde);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 72px;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--borde);
+  color: var(--secundario);
+  font-size: 13px;
+}
+.site-footer strong {
+  color: var(--verde-texto);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.site-footer p {
+  margin: 6px 0;
+}
+
+/* ---------- Componentes ---------- */
+.panel {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.025);
+  border-radius: 12px;
+  background: var(--superficie);
+}
+.page-heading,
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 18px 0;
+}
+.page-heading p,
+.section-title p {
+  margin: 0;
+}
+.two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+  gap: 28px;
+  align-items: start;
+}
+/* Botones tipo píldora: primario relleno verde, secundario solo con borde */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--texto);
+  font-weight: 700;
+  cursor: pointer;
+}
+.button.primary {
+  background: var(--verde);
+  border-color: var(--verde);
+}
+.button.full {
+  width: 100%;
+  margin-top: 10px;
+}
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.field {
+  display: grid;
+  gap: 7px;
+  margin: 14px 0;
+}
+.field label {
+  color: var(--secundario);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 16px;
+}
+.form-panel {
+  margin-bottom: 18px;
+}
+.form-panel h2:first-child {
+  margin-top: 0;
+}
+hr {
+  margin: 22px 0;
+  border: 0;
+  border-top: 1px solid var(--borde);
+}
+/* Casilla con su texto en una sola línea (más específica que ".field label" y ".variant-row label") */
+.check,
+.field .check,
+.variant-row .check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--texto);
+  font-size: 14px;
+  text-transform: none;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--verde);
+}
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  min-height: 36px;
+  padding: 8px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--secundario);
+  font-size: 12px;
+  cursor: pointer;
+}
+.chip.active {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+}
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 24px;
+}
+table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  text-align: left;
+}
+th,
+td {
+  padding: 16px 12px;
+  border-bottom: 1px solid var(--borde);
+  font-size: 13px;
+}
+th {
+  color: var(--secundario);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+td select {
+  width: auto;
+}
+.status {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 92px;
+  padding: 5px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 4px; /* esquinas casi rectas, como una etiqueta de tienda: solo botones y filtros son píldoras */
+  background: var(--fondo);
+  color: var(--secundario);
+  font-size: 11px;
+}
+.status.shipped {
+  background: var(--verde);
+  color: #fff;
+}
+.status.cancelled {
+  background: var(--rojo-fondo);
+  color: var(--rojo-texto);
+}
+.ver-mas-caja {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+/* Estrellas: --valor (0 a 5, con medias) decide qué tanto se rellenan */
+.estrellas {
+  --valor: 0;
+  display: inline-block;
+  width: max-content; /* el cuadro mide lo mismo que las 5 estrellas: así el clic cae en la estrella correcta */
+  font-size: 18px;
+  letter-spacing: 2px;
+  line-height: 1;
+  vertical-align: middle;
+  background: linear-gradient(90deg, var(--laton) calc(var(--valor) / 5 * 100%), #3b403b calc(var(--valor) / 5 * 100%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.estrellas-selector {
+  font-size: 34px;
+  cursor: pointer;
+  user-select: none;
+}
+.estrellas-selector:focus-visible {
+  outline: 2px solid var(--verde);
+  outline-offset: 4px;
+}
+.rating {
+  color: var(--verde-texto);
+  font-size: 12px;
+}
+.rating .estrellas {
+  margin-right: 4px;
+  font-size: 13px;
+}
+.valor-estrellas {
+  color: var(--texto);
+  font-size: 13px;
+}
+/* Pastilla "3 reseñas" (con clase propia para no pintar también las estrellas) */
+.conteo-resenas {
+  display: inline-block;
+  margin-left: 7px;
+  padding: 1px 10px;
+  border: 1px solid var(--borde);
+  border-radius: 99px;
+  color: var(--secundario);
+  font-size: 10px;
+}
+
+/* ---------- Catálogo ---------- */
+.filter-panel {
+  display: grid;
+  grid-template-columns: 1.5fr 0.7fr;
+  gap: 24px;
+  margin: 28px 0;
+}
+.filter-panel h2 {
+  margin: 0 0 10px;
+  color: var(--secundario);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.sort {
+  display: grid;
+  gap: 5px;
+  color: var(--secundario);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+}
+.album-card {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--superficie);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.album-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+.cover-link {
+  display: block;
+  overflow: hidden;
+}
+/* Portada: imagen real, o un cuadro de color apagado con las iniciales si el álbum no tiene imagen */
+.cover {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+  color: var(--texto);
+  transition: transform 0.35s ease;
+}
+.album-card:hover .cover {
+  transform: scale(1.1);
+}
+.cover span,
+.cover small {
+  color: rgba(255, 255, 255, 0.8);
+  font: 10px/1.2 Arial, sans-serif;
+  text-align: center;
+}
+.cover b {
+  align-self: center;
+  font: bold clamp(38px, 5vw, 54px) / 1 Georgia, serif;
+}
+.cover-teal {
+  background: #34443e;
+}
+.cover-purple {
+  background: #443843;
+}
+.cover-olive {
+  background: #484a3c;
+}
+.cover-rust {
+  background: #51463c;
+}
+.cover-blue {
+  background: #3b4648;
+}
+.cover-img-box {
+  padding: 0;
+}
+.cover-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.album-info {
+  padding: 10px 12px 14px;
+}
+.album-info h3 {
+  margin: 0 0 3px;
+  font: 17px/1.2 Georgia, serif;
+}
+.album-info h3 a {
+  color: var(--texto);
+}
+.album-info p {
+  margin: 0 0 4px;
+  color: var(--secundario);
+  font-size: 12px;
+}
+.album-info strong {
+  font-size: 13px;
+}
+/* Precio con descuento: el original tachado y la etiqueta del porcentaje */
+.precio-original {
+  color: var(--secundario);
+  font-weight: 400;
+}
+.etiqueta-descuento {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 4px;
+  background: var(--verde);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+/* Círculos V / CD / C con los formatos disponibles */
+.formatos {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+.formato-punto {
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  border: 1px solid var(--borde);
+  border-radius: 99px;
+  color: var(--secundario);
+  font-size: 11px;
+  font-weight: 700;
+}
+.store-section {
+  margin-top: 64px;
+}
+.store-section > p {
+  text-align: center; /* dirección y horario debajo del mapa */
+}
+.mapa {
+  position: relative;
+  z-index: 0; /* los controles de Leaflet no deben quedar encima del encabezado */
+  height: 340px;
+  overflow: hidden;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  background: var(--superficie);
+}
+
+/* ---------- Detalle del álbum ---------- */
+.album-detail {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.75fr) 1.25fr;
+  gap: 44px;
+  align-items: start;
+}
+.album-detail h2 {
+  margin-top: 26px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.detail-cover {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 10px;
+}
+.detail-cover b {
+  font-size: 90px;
+}
+.artist-link {
+  font-size: 20px;
+}
+.variant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.variant {
+  display: grid;
+  gap: 8px;
+  padding: 14px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 9px;
+  background: var(--superficie);
+}
+.variant.selected {
+  border-color: var(--verde);
+}
+.variant.disabled {
+  opacity: 0.6;
+}
+.content-section {
+  margin-top: 44px;
+}
+.tracklist {
+  max-width: 720px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: cancion;
+}
+.tracklist li {
+  display: flex;
+  gap: 12px;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--borde);
+  counter-increment: cancion;
+}
+.tracklist li::before {
+  content: counter(cancion);
+  width: 28px;
+  color: var(--secundario);
+  text-align: right;
+}
+.tracklist li span {
+  flex: 1;
+}
+.review {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--borde);
+}
+.review p {
+  margin: 8px 0 0;
+  color: var(--secundario);
+}
+
+/* ---------- Artista ---------- */
+.artist-hero {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 34px;
+  align-items: center;
+  margin: 34px 0 50px;
+}
+.artist-avatar,
+.avatar {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #42364f;
+  font: bold 32px Georgia, serif;
+}
+.artist-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borde);
+}
+.artist-stats div {
+  display: grid;
+  gap: 4px;
+}
+.artist-stats strong {
+  font-size: 22px;
+}
+.artist-stats span {
+  color: var(--secundario);
+  font-size: 12px;
+}
+
+/* ---------- Carrito, pago y pedido ---------- */
+.cart-list {
+  display: grid;
+  gap: 14px;
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: 72px minmax(120px, 1fr) 100px auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--borde);
+}
+.cart-item h2 {
+  margin: 0;
+  font: 18px Georgia, serif;
+}
+.cart-item p {
+  margin: 3px 0;
+  color: var(--secundario);
+  font-size: 12px;
+}
+.cart-item label {
+  color: var(--secundario);
+  font-size: 10px;
+}
+.cart-item input {
+  min-height: 36px;
+  padding: 5px;
+}
+.mini-cover {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover; /* cuando es una imagen, que no se deforme */
+  border-radius: 6px;
+  font: bold 23px Georgia, serif;
+}
+/* Resumen de dinero: concepto a la izquierda, cantidad a la derecha */
+.summary h2 {
+  margin: 0 0 22px;
+}
+.summary p {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 14px 0;
+  font-size: 13px;
+}
+.summary p span:first-child {
+  color: var(--secundario);
+}
+.summary .total {
+  font-size: 16px;
+}
+.summary small {
+  display: block;
+  margin-top: 12px;
+  font-size: 11px;
+}
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0 22px;
+}
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+.choice input {
+  margin-top: 4px;
+}
+.choice span {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+}
+/* Código de pago en tienda */
+.code-panel {
+  max-width: 720px;
+  margin: 48px auto;
+  padding: 40px;
+  text-align: center;
+}
+.payment-code {
+  margin: 28px auto;
+  padding: 22px;
+  border: 1px dashed var(--verde);
+  border-radius: 10px;
+  background: #111712;
+  font: bold clamp(24px, 5vw, 38px) / 1.2 monospace;
+  letter-spacing: 0.1em;
+}
+.instructions {
+  display: grid;
+  gap: 10px;
+  max-width: 500px;
+  margin: 28px auto;
+  text-align: left;
+}
+.instructions div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.instructions b {
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--verde);
+}
+.instructions p {
+  margin: 0;
+}
+/* Pasos del pedido (confirmado → preparando → enviado → entregado) */
+.timeline {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.timeline li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 14px;
+  min-height: 68px;
+}
+.timeline li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 34px;
+  height: 32px;
+  border-left: 4px dotted #477f51;
+}
+.timeline li div {
+  display: grid;
+  align-content: start;
+}
+.step {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--borde);
+  border-radius: 50%;
+  font-size: 10px;
+}
+.timeline .done .step {
+  background: var(--verde);
+  border-color: var(--verde);
+}
+.timeline .cancelled-step .step {
+  background: var(--rojo-fondo);
+  border-color: #7a4444;
+}
+
+/* ---------- Mi cuenta y panel ---------- */
+.profile-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding: 10px 0 20px;
+  border-bottom: 1px solid var(--borde);
+}
+.profile-heading h1,
+.profile-heading p {
+  margin: 0;
+}
+.avatar {
+  flex: none;
+  width: 64px;
+  background: var(--verde);
+  font: 700 20px Arial, sans-serif;
+}
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+/* Reportes del panel: más vendidos, más solicitados y stock bajo */
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.report-grid h2 {
+  margin-top: 0;
+  font-size: 16px;
+}
+.report-grid p {
+  margin: 8px 0;
+  font-size: 13px;
+}
+.metric {
+  display: grid;
+  gap: 5px;
+}
+.metric small {
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.metric strong {
+  font-size: 24px;
+}
+.metric span {
+  color: var(--secundario);
+  font-size: 11px;
+}
+/* Formulario de álbum: una fila por formato (vinilo, CD, cassette) */
+.variant-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+.variant-row label {
+  display: grid;
+  gap: 5px;
+  color: var(--secundario);
+  font-size: 10px;
+}
+
+/* ---------- Iniciar sesión y crear cuenta ---------- */
+.auth-page {
+  display: grid;
+  min-height: calc(100vh - 88px);
+  align-items: center;
+}
+.auth-layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 440px);
+  gap: clamp(36px, 8vw, 120px);
+  align-items: center;
+  max-width: 1080px;
+  margin: 30px auto;
+}
+.auth-copy {
+  display: grid;
+  gap: 24px;
+}
+.auth-copy h1 {
+  max-width: 540px;
+  margin: 0;
+  font-size: clamp(36px, 5vw, 52px);
+  line-height: 1.08;
+}
+.auth-copy p {
+  margin: 0;
+}
+.auth-panel {
+  padding: 30px;
+}
+.auth-panel h2 {
+  margin: 0 0 8px;
+  font-size: 30px;
+}
+/* Enlaces debajo del formulario ("¿Ya tienes cuenta?…") */
+.auth-panel form ~ .muted {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* ---------- Pantallas medianas ---------- */
+@media (max-width: 950px) {
+  .album-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .two-col,
+  .filter-panel,
+  .auth-layout,
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+  .metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .site-header {
+    flex-wrap: wrap;
+    padding-block: 16px;
+  }
+  .search {
+    order: 3;
+    width: 100%;
+  }
+  .site-header nav {
+    gap: 14px;
+  }
+  .auth-page {
+    min-height: auto;
+  }
+}
+
+/* ---------- Teléfonos ---------- */
+@media (max-width: 650px) {
+  .wrap {
+    width: calc(100% - 32px);
+  }
+  .site-header nav {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2px 6px;
+  }
+  .page h1 {
+    font-size: 29px;
+  }
+  .page-heading,
+  .section-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .album-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .album-detail,
+  .artist-hero,
+  .variant-grid,
+  .field-grid,
+  .choice-grid {
+    grid-template-columns: 1fr;
+  }
+  .detail-cover,
+  .artist-avatar {
+    max-width: 280px;
+    margin-inline: auto;
+  }
+  .cart-item {
+    grid-template-columns: 56px 1fr auto;
+    gap: 10px;
+  }
+  .cart-item > label {
+    grid-column: 2;
+  }
+  .cart-item > strong {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .variant-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .metric strong {
+    font-size: 20px;
+  }
+  .site-footer {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 48px;
+  }
+  .code-panel {
+    margin: 24px auto;
+    padding: 24px 18px;
+  }
+  .auth-panel {
+    padding: 22px;
+  }
+}
+
+/* En pantallas táctiles, lo que se toca mide al menos 44 px */
+@media (max-width: 650px), (pointer: coarse) {
+  .brand,
+  .site-header nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 8px;
+  }
+  .chip {
+    min-height: 44px;
+  }
+}
+
+/* Quien pidió menos movimiento en su sistema no ve las animaciones */
+@media (prefers-reduced-motion: reduce) {
+  .album-card,
+  .cover {
+    transition: none;
+  }
+  .album-card:hover,
+  .album-card:hover .cover {
+    transform: none;
+  }
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dissonance, tienda de discos en la Riviera Nayarit" />
+    <title>Catálogo · Dissonance</title>
+    <link rel="stylesheet" href="CSS/estilos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header class="site-header wrap"></header>
+    <main class="wrap page">
+      <div class="page-heading">
+        <div>
+          <h1>Catálogo</h1>
+          <p class="muted">Vinilo, CD y cassette. Todo lo que ves está en nuestros anaqueles de Bahía de Banderas.</p>
+        </div>
+      </div>
+      <section class="filter-panel panel">
+        <div>
+          <h2>Género</h2>
+          <div class="chip-row" id="chips-genero"></div>
+        </div>
+        <div class="field">
+          <label for="formato">Formato</label>
+          <select id="formato">
+            <option value="">Todos los formatos</option>
+            <option value="vinyl">Vinilo</option>
+            <option value="cd">CD</option>
+            <option value="cassette">Cassette</option>
+          </select>
+          <label class="check"><input type="checkbox" id="ofertas" /> Solo ofertas</label>
+        </div>
+      </section>
+      <div class="section-title">
+        <div>
+          <h2>Álbumes</h2>
+          <p class="muted" id="resultado-busqueda" role="status"></p>
+        </div>
+        <label class="sort">
+          Ordenar
+          <select id="orden">
+            <option value="new">Más recientes</option>
+            <option value="price_asc">Precio: menor a mayor</option>
+            <option value="price_desc">Precio: mayor a menor</option>
+            <option value="rating">Mejor calificados</option>
+            <option value="name">Título A–Z</option>
+          </select>
+        </label>
+      </div>
+      <section class="album-grid" id="lista-albumes" aria-live="polite">
+        <p class="muted">Cargando álbumes...</p>
+      </section>
+      <div class="ver-mas-caja">
+        <small class="muted" id="contador-albumes"></small>
+        <button type="button" class="button secondary" id="ver-mas" style="display: none">Ver más</button>
+      </div>
+      <section class="store-section">
+        <div class="section-title">
+          <h2>Visita la tienda</h2>
+          <p class="muted">Riviera Nayarit</p>
+        </div>
+        <!-- El mapa lo dibuja JS/mapa.js con la biblioteca Leaflet -->
+        <div class="mapa" id="mapa-tienda" role="region" aria-label="Mapa con la ubicación de Dissonance"></div>
+        <p class="muted">
+          Blvd. Riviera Nayarit #200-69 · Lunes a sábado, 9:00–16:00 y 17:00–22:00 · Tel. 322 140 1667 ·
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=20.7119938,-105.2755246"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Abrir en Google Maps</a
+          >
+        </p>
+      </section>
+    </main>
+    <footer class="site-footer wrap"></footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="JS/comun.js"></script>
+    <script src="JS/encabezado.js"></script>
+    <script src="JS/catalogo.js"></script>
+    <script src="JS/mapa.js"></script>
+  </body>
+</html>

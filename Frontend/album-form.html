@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dissonance, tienda de discos en la Riviera Nayarit" />
+    <title>Agregar o editar álbum · Dissonance</title>
+    <link rel="stylesheet" href="CSS/estilos.css" />
+  </head>
+  <body>
+    <header class="site-header wrap"></header>
+    <main class="wrap page">
+      <h1 id="titulo-pagina">Agregar álbum</h1>
+      <form id="form-album" class="panel form-panel">
+        <div class="field-grid">
+          <div class="field">
+            <label for="titulo">Título</label>
+            <input id="titulo" maxlength="150" required />
+          </div>
+          <div class="field">
+            <label for="artista">Artista</label>
+            <input id="artista" maxlength="100" required />
+          </div>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="genero">Género</label>
+            <input id="genero" list="lista-generos" maxlength="50" required />
+            <datalist id="lista-generos"></datalist>
+          </div>
+          <div class="field">
+            <label for="anio">Año de lanzamiento</label>
+            <input id="anio" type="number" min="1900" max="2100" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="portada">URL de la portada</label>
+          <input id="portada" type="url" placeholder="https://..." />
+        </div>
+        <div class="field">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" rows="4" maxlength="2000"></textarea>
+        </div>
+
+        <h2>Formatos, precios y existencias</h2>
+        <p class="muted">Marca los formatos que vendes de este álbum. El precio va en pesos.</p>
+        <div id="formatos"></div>
+
+        <h2>Lista de canciones</h2>
+        <p class="muted">Una canción por renglón: título, una barra vertical y la duración (por ejemplo: Come Together | 4:20). La duración es opcional.</p>
+        <div class="field">
+          <label class="sr-only" for="canciones">Canciones</label>
+          <textarea id="canciones" rows="10" placeholder="Come Together | 4:20&#10;Something | 3:03"></textarea>
+        </div>
+
+        <p class="muted" id="aviso-album" role="status"></p>
+        <div class="button-row">
+          <button type="submit" class="button primary" id="guardar-album">Guardar álbum</button>
+          <a class="button secondary" href="admin-albumes.html">Cancelar</a>
+        </div>
+      </form>
+    </main>
+    <footer class="site-footer wrap"></footer>
+    <script src="JS/comun.js"></script>
+    <script src="JS/encabezado.js"></script>
+    <script src="JS/album-form.js"></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dissonance, tienda de discos en la Riviera Nayarit" />
+    <title>Crear cuenta · Dissonance</title>
+    <link rel="stylesheet" href="CSS/estilos.css" />
+  </head>
+  <body>
+    <header class="site-header wrap"></header>
+    <main class="wrap auth-page">
+      <section class="auth-layout">
+        <div class="auth-copy">
+          <h1>La música también se colecciona.</h1>
+          <p class="muted">Discos elegidos para escuchar el álbum completo, de principio a fin.</p>
+        </div>
+        <section class="panel auth-panel" aria-labelledby="titulo-registro">
+          <h2 id="titulo-registro">Empieza tu colección.</h2>
+          <p class="muted">Crea una cuenta para hacer pedidos y dejar reseñas.</p>
+          <form id="form-registro">
+            <div class="field">
+              <label for="nombre">Nombre completo</label>
+              <input id="nombre" required autocomplete="name" placeholder="Tu nombre" />
+            </div>
+            <div class="field">
+              <label for="email">Correo electrónico</label>
+              <input id="email" type="email" required autocomplete="email" placeholder="tu@ejemplo.com" />
+            </div>
+            <div class="field">
+              <label for="telefono">Teléfono · opcional</label>
+              <input id="telefono" type="tel" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="pass">Contraseña</label>
+              <input id="pass" type="password" required minlength="8" autocomplete="new-password" placeholder="Mínimo 8 caracteres" />
+            </div>
+            <p id="mensaje" class="error" role="alert"></p>
+            <button class="button primary full">Crear cuenta</button>
+          </form>
+          <p class="muted">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+        </section>
+      </section>
+    </main>
+    <footer class="site-footer wrap"></footer>
+    <script src="JS/comun.js"></script>
+    <script src="JS/encabezado.js"></script>
+    <script src="JS/registro.js"></script>
+  </body>
+</html>

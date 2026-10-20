@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dissonance, tienda de discos en la Riviera Nayarit" />
+    <title>Panel de pedidos · Dissonance</title>
+    <link rel="stylesheet" href="CSS/estilos.css" />
+  </head>
+  <body>
+    <header class="site-header wrap"></header>
+    <main class="wrap page">
+      <div class="page-heading">
+        <h1>Panel de administrador</h1>
+        <a class="button secondary" href="admin-albumes.html">Administrar álbumes</a>
+      </div>
+      <div id="resumen"><p class="muted">Cargando el resumen…</p></div>
+
+      <div class="section-title"><h2>Pedidos</h2></div>
+      <p class="muted">Cambia el estado de cada pedido; el cliente lo verá en su detalle. El número abre el pedido completo.</p>
+      <p class="muted" id="aviso-tabla" role="status"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Pedido</th>
+              <th>Cliente</th>
+              <th>Discos</th>
+              <th>Entrega</th>
+              <th>Pago</th>
+              <th>Estado</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-pedidos">
+            <tr><td colspan="7" class="muted">Cargando pedidos…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ver-mas-caja">
+        <small class="muted" id="contador-pedidos"></small>
+        <button type="button" class="button secondary" id="ver-mas-pedidos" style="display: none">Ver más</button>
+      </div>
+
+      <form class="panel form-panel" id="form-pago" style="margin-top: 32px">
+        <h2>Confirmar pago en tienda</h2>
+        <p class="muted">
+          Cuando el cliente pague en caja, escribe el código que te muestre (formato DIS-12-3456) para marcar el pedido como pagado.
+        </p>
+        <div class="field">
+          <label for="codigo-pago">Código de pago</label>
+          <input id="codigo-pago" placeholder="DIS-12-3456" autocomplete="off" />
+        </div>
+        <button type="submit" class="button primary">Confirmar pago</button>
+        <p class="muted" id="aviso-pago" role="status"></p>
+      </form>
+    </main>
+    <footer class="site-footer wrap"></footer>
+    <script src="JS/comun.js"></script>
+    <script src="JS/encabezado.js"></script>
+    <script src="JS/admin.js"></script>
+  </body>
+</html>
