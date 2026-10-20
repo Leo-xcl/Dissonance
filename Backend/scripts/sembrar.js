@@ -44,11 +44,19 @@ function sembrarDemo() {
   });
 
   const albumes = db.prepare('SELECT id FROM albums WHERE is_active = 1').all();
-  const comentarios = ['Un clásico.', 'Suena increíble en vinilo.', 'Lo escucho toda la semana.', 'Buen disco, aunque esperaba más.', '', ''];
+  // El comentario va de acuerdo con las estrellas (un "Un clásico." nunca sale con 2.5)
+  const RESENAS = [
+    { estrellas: [4.5, 5], comentarios: ['Un clásico.', 'Suena increíble en vinilo.', ''] },
+    { estrellas: [4, 4.5], comentarios: ['Lo escucho toda la semana.', ''] },
+    { estrellas: [3, 3.5], comentarios: ['Buen disco, aunque esperaba más.', ''] },
+    { estrellas: [2.5], comentarios: ['No es lo mío, pero tiene buenos momentos.', ''] },
+  ];
+  const PESOS = [0, 0, 0, 1, 1, 2, 3]; // más reseñas buenas que malas
   for (const a of albumes) {
     if (Math.random() < 0.5) continue; // no todos los discos tienen reseñas
     for (const u of usuarios.filter(() => Math.random() < 0.3)) {
-      resenaModelo.guardar(u, a.id, { rating: elegir([2.5, 3, 3.5, 4, 4, 4.5, 5, 5]), comment: elegir(comentarios) });
+      const tipo = RESENAS[elegir(PESOS)];
+      resenaModelo.guardar(u, a.id, { rating: elegir(tipo.estrellas), comment: elegir(tipo.comentarios) });
     }
   }
 
