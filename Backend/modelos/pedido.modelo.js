@@ -2,7 +2,7 @@
 const crypto = require('crypto');
 const db = require('../base-de-datos');
 const { falla } = require('./errores');
-const { texto, entero } = require('./validar');
+const { texto, entero, nombrePersona } = require('./validar');
 const { STOCK_VISIBLE_MAX, precioFinal } = require('./album.modelo');
 const { validarTarjeta } = require('./tarjeta');
 
@@ -59,7 +59,7 @@ function validarPedido(d) {
   const pago = d.payment || {};
 
   if (d.delivery !== 'pickup' && d.delivery !== 'shipping') throw falla(400, 'Elige cómo quieres recibir tu pedido.');
-  const nombre = texto(contacto.name, 2, 100, 'Escribe el nombre de contacto.');
+  const nombre = nombrePersona(contacto.name, 'Escribe el nombre de contacto, solo con letras.');
   const telefono = String(contacto.phone || '').replace(/[\s-]/g, '');
   if (!/^\d{10}$/.test(telefono)) throw falla(400, 'El teléfono debe tener 10 dígitos.');
 

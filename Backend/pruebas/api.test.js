@@ -364,3 +364,26 @@ test('panel: el resumen trae cifras del mes, más vendidos, más solicitados y s
   assert.ok(pedidos.every((p) => Array.isArray(p.next_statuses)));
   assert.ok(pedidos.every((p) => p.items.length > 0 && p.items[0].title && p.items[0].quantity)); // qué discos lleva cada pedido
 });
+
+// ---------------------------------------------------------------- Reglas de los datos (fase de mantenimiento)
+test('validaciones: sin notación con "e", sin fechas exageradas y con reglas para nombre, correo y contraseña', async () => {
+  const v = albumPrueba.formats.find((f) => f.format === 'vinyl');
+  assert.equal((await visitante.post('/api/orders/quote', { items: [{ variantId: v.id, quantity: '1e1' }] })).estado, 400);
+  assert.equal((await admin.post('/api/admin/albums', { ...ALBUM_PRUEBA, release_year: 2100 })).estado, 400);
+  assert.equal((await admin.post('/api/admin/albums', { ...ALBUM_PRUEBA, release_year: '1.95e3' })).estado, 400);
+
+  const pedido = { delivery: 'pickup', contact: CONTACTO, items: [{ variantId: v.id, quantity: 1 }] };
+  for (const expiry of ['01/99', '12/2999']) { // vencimientos a más de 20 años
+    assert.equal((await ana.post('/api/orders', { ...pedido, payment: { method: 'card', card: { ...TARJETA, expiry } } })).estado, 400);
+  }
+  assert.equal((await ana.post('/api/orders', { ...pedido, contact: { ...CONTACTO, name: '12345' }, payment: { method: 'store' } })).estado, 400);
+
+  const nueva = new Cliente();
+  const cuenta = { name: 'Dana Prueba', email: 'dana@prueba.com', phone: '3221234567', password: 'Clave12345' };
+  assert.equal((await nueva.post('/api/auth/register', { ...cuenta, password: 'soloLetras' })).estado, 400);
+  assert.equal((await nueva.post('/api/auth/register', { ...cuenta, password: '12345678' })).estado, 400);
+  assert.equal((await nueva.post('/api/auth/register', { ...cuenta, name: 'R2D2' })).estado, 400);
+  assert.equal((await nueva.post('/api/auth/register', { ...cuenta, email: `${'a'.repeat(250)}@prueba.com` })).estado, 400);
+  assert.equal((await nueva.post('/api/auth/register', { ...cuenta, phone: '32212345678' })).estado, 400); // 11 dígitos
+  assert.equal((await nueva.post('/api/auth/register', cuenta)).estado, 201);
+});

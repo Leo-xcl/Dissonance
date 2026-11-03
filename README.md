@@ -16,8 +16,8 @@ npm start
 Abre http://localhost:3000.
 
 - `npm run sembrar` carga el catálogo (137 álbumes). Con `-- --demo` agrega además clientes, reseñas y pedidos de ejemplo para que el panel tenga movimiento. Se puede repetir sin duplicar nada.
-- `npm run admin` crea una cuenta de administrador con el correo y la contraseña que tú elijas (mínimo 8 caracteres).
-- `npm test` corre las 21 pruebas automáticas con una base de datos temporal (no toca la tuya). Usan el puerto 3100: no tengas otro servidor en ese puerto mientras corren.
+- `npm run admin` crea una cuenta de administrador con el correo y la contraseña que tú elijas (de 8 a 72 caracteres, con al menos una letra y un número).
+- `npm test` corre las 22 pruebas automáticas con una base de datos temporal (no toca la tuya). Usan el puerto 3100: no tengas otro servidor en ese puerto mientras corren.
 - La base de datos se crea sola al arrancar: `base-de-datos.js` ejecuta `schema.sql` (todas las tablas con `CREATE TABLE IF NOT EXISTS`, claves foráneas y reglas `CHECK`). Así el esquema es reproducible sin herramientas de migraciones.
 
 ### Variables de entorno (todas opcionales en desarrollo)

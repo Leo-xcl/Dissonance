@@ -21,19 +21,23 @@
           <form id="form-registro">
             <div class="field">
               <label for="nombre">Nombre completo</label>
-              <input id="nombre" required autocomplete="name" placeholder="Tu nombre" />
+              <input id="nombre" required maxlength="100" autocomplete="name" placeholder="Tu nombre" />
             </div>
             <div class="field">
               <label for="email">Correo electrónico</label>
-              <input id="email" type="email" required autocomplete="email" placeholder="tu@ejemplo.com" />
+              <input id="email" type="email" required maxlength="254" autocomplete="email" placeholder="tu@ejemplo.com" />
             </div>
             <div class="field">
               <label for="telefono">Teléfono · opcional</label>
-              <input id="telefono" type="tel" autocomplete="tel" />
+              <input id="telefono" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10 dígitos" />
             </div>
             <div class="field">
               <label for="pass">Contraseña</label>
-              <input id="pass" type="password" required minlength="8" autocomplete="new-password" placeholder="Mínimo 8 caracteres" />
+              <input id="pass" type="password" required minlength="8" maxlength="72" autocomplete="new-password" placeholder="8 o más, con letras y números" />
+            </div>
+            <div class="field">
+              <label for="pass2">Confirmar contraseña</label>
+              <input id="pass2" type="password" required maxlength="72" autocomplete="new-password" placeholder="Escríbela otra vez" />
             </div>
             <p id="mensaje" class="error" role="alert"></p>
             <button class="button primary full">Crear cuenta</button>

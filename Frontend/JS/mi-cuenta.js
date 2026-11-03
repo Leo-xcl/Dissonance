@@ -44,6 +44,10 @@ formulario.addEventListener('submit', async (evento) => {
   mensaje.textContent = '';
   const datos = { name: campo('nombre').value, phone: campo('telefono').value, email: campo('correo').value };
   if (campo('contrasena').value) {
+    if (campo('contrasena').value !== campo('contrasena2').value) {
+      mensaje.textContent = 'Las contraseñas nuevas no coinciden.';
+      return;
+    }
     datos.new_password = campo('contrasena').value;
     datos.current_password = campo('contrasena-actual').value;
   }
@@ -54,6 +58,7 @@ formulario.addEventListener('submit', async (evento) => {
   }
   pintarPerfil(respuesta.datos);
   campo('contrasena').value = '';
+  campo('contrasena2').value = '';
   campo('contrasena-actual').value = '';
   mensaje.textContent = 'Cambios guardados.';
 });

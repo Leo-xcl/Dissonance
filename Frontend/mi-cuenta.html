@@ -28,16 +28,16 @@
         <div class="field-grid">
           <div class="field">
             <label for="nombre">Nombre completo</label>
-            <input id="nombre" autocomplete="name" />
+            <input id="nombre" maxlength="100" autocomplete="name" />
           </div>
           <div class="field">
             <label for="telefono">Teléfono</label>
-            <input id="telefono" type="tel" inputmode="numeric" autocomplete="tel" />
+            <input id="telefono" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10 dígitos" />
           </div>
         </div>
         <div class="field">
           <label for="correo">Correo electrónico</label>
-          <input id="correo" type="email" autocomplete="email" />
+          <input id="correo" type="email" maxlength="254" autocomplete="email" />
         </div>
         <hr />
         <h2>Seguridad</h2>
@@ -47,7 +47,11 @@
         </div>
         <div class="field">
           <label for="contrasena">Nueva contraseña</label>
-          <input id="contrasena" type="password" autocomplete="new-password" placeholder="Dejar en blanco para conservarla" />
+          <input id="contrasena" type="password" maxlength="72" autocomplete="new-password" placeholder="Dejar en blanco para conservarla" />
+        </div>
+        <div class="field">
+          <label for="contrasena2">Confirmar nueva contraseña</label>
+          <input id="contrasena2" type="password" maxlength="72" autocomplete="new-password" placeholder="Escríbela otra vez" />
         </div>
         <p id="mensaje" role="status"></p>
         <button class="button primary">Guardar cambios</button>

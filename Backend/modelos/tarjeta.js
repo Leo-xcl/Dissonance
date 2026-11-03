@@ -31,8 +31,11 @@ function validarTarjeta(tarjeta) {
   const m = /^(\d{2})\/?(\d{2}|\d{4})$/.exec(String(tarjeta.expiry || '').replace(/\s/g, ''));
   const mes = m ? Number(m[1]) : 0;
   const anio = m ? (m[2].length === 2 ? 2000 + Number(m[2]) : Number(m[2])) : 0;
+  // Se cuentan meses: no puede estar vencida ni vencer en más de 20 años (ninguna tarjeta real dura tanto)
   const hoy = new Date();
-  if (!m || mes < 1 || mes > 12 || anio * 12 + mes < hoy.getFullYear() * 12 + hoy.getMonth() + 1) {
+  const vence = anio * 12 + mes;
+  const esteMes = hoy.getFullYear() * 12 + hoy.getMonth() + 1;
+  if (!m || mes < 1 || mes > 12 || vence < esteMes || vence > esteMes + 20 * 12) {
     throw falla(400, 'La fecha de vencimiento no es válida.');
   }
   if (!/^\d{3}$/.test(String(tarjeta.cvv || ''))) throw falla(400, 'El código de seguridad debe tener 3 dígitos.');

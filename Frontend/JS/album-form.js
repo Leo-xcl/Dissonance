@@ -79,6 +79,7 @@ function llenarFormulario(album) {
 }
 
 async function iniciar() {
+  campo('anio').max = new Date().getFullYear() + 1; // el mismo tope que revisa el servidor
   const generos = await llamarApi('/api/albums/genres');
   if (generos.ok) campo('lista-generos').innerHTML = generos.datos.map((g) => `<option value="${escapar(g.name)}">`).join('');
 

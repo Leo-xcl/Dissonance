@@ -210,3 +210,15 @@ function crearVerMas(boton, contador, nombrePlural, redibujar) {
     },
   };
 }
+
+// ---------------------------------------------------------------- Reglas de los campos (el servidor las vuelve a revisar)
+
+// En los campos numéricos el navegador deja escribir "e", "+" y "-" (notación científica); en la tienda no tienen sentido
+document.addEventListener('keydown', (e) => {
+  if (e.target.type === 'number' && ['e', 'E', '+', '-'].includes(e.key)) e.preventDefault();
+});
+
+// Los teléfonos solo llevan dígitos y son de 10 (también si se pegan con guiones o espacios)
+document.addEventListener('input', (e) => {
+  if (e.target.type === 'tel') e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+});

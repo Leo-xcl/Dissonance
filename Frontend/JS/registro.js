@@ -4,6 +4,10 @@ const mensaje = document.getElementById('mensaje');
 formulario.addEventListener('submit', async (evento) => {
   evento.preventDefault();
   mensaje.textContent = '';
+  if (document.getElementById('pass').value !== document.getElementById('pass2').value) {
+    mensaje.textContent = 'Las contraseñas no coinciden.';
+    return;
+  }
 
   const { ok, datos } = await llamarApi('/api/auth/register', 'POST', {
     name: document.getElementById('nombre').value.trim(),

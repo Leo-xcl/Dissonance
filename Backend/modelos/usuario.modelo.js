@@ -2,9 +2,10 @@
 const bcrypt = require('bcryptjs');
 const db = require('../base-de-datos');
 const { falla } = require('./errores');
-const { texto } = require('./validar');
+const { nombrePersona } = require('./validar');
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_MAX = 254; // largo máximo de un correo según el estándar
 
 function crearUsuario({ nombre, email, telefono, hash, rol = 'customer' }) {
   const r = db
@@ -23,16 +24,20 @@ function buscarPorId(id) {
 }
 
 function validarDatos(d) {
-  const nombre = texto(d.name, 2, 100, 'Escribe tu nombre completo.');
+  const nombre = nombrePersona(d.name, 'Escribe tu nombre completo, solo con letras.');
   const correo = String(d.email || '').trim().toLowerCase();
-  if (!EMAIL_RE.test(correo)) throw falla(400, 'Correo electrónico inválido.');
+  if (correo.length > EMAIL_MAX || !EMAIL_RE.test(correo)) throw falla(400, 'Correo electrónico inválido.');
   const telefono = String(d.phone || '').replace(/[\s-]/g, '');
   if (telefono && !/^\d{10}$/.test(telefono)) throw falla(400, 'El teléfono debe tener 10 dígitos.');
   return { nombre, correo, telefono: telefono || null };
 }
 
+// De 8 a 72 caracteres (bcrypt no toma en cuenta lo que pase de 72) y con al menos una letra y un número
 function validarContrasena(password) {
-  if (String(password || '').length < 8) throw falla(400, 'La contraseña debe tener al menos 8 caracteres.');
+  const p = String(password || '');
+  if (p.length < 8 || p.length > 72 || !/\p{L}/u.test(p) || !/\d/.test(p)) {
+    throw falla(400, 'La contraseña debe tener de 8 a 72 caracteres, con al menos una letra y un número.');
+  }
 }
 
 const correoRepetido = () => falla(409, 'Ya existe una cuenta con ese correo.');
@@ -72,4 +77,4 @@ async function actualizarPerfil(id, datos) {
   return buscarPorId(id);
 }
 
-module.exports = { crearUsuario, buscarPorEmail, buscarPorId, registrar, autenticar, actualizarPerfil };
+module.exports = { crearUsuario, buscarPorEmail, buscarPorId, validarContrasena, registrar, autenticar, actualizarPerfil };

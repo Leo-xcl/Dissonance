@@ -37,9 +37,10 @@ function validar(d) {
   const titulo = texto(d.title, 1, 150, 'El título debe tener entre 1 y 150 caracteres.');
   const artista = texto(d.artist, 1, 100, 'Escribe el nombre del artista (máximo 100 caracteres).');
   const genero = texto(d.genre, 1, 50, 'Escribe el género (máximo 50 caracteres).');
+  const anioMax = new Date().getFullYear() + 1; // se permite un disco anunciado para el año que viene
   const anio = d.release_year === '' || d.release_year === null || d.release_year === undefined
     ? null
-    : entero(d.release_year, 1900, 2100, 'El año debe estar entre 1900 y 2100.');
+    : entero(d.release_year, 1900, anioMax, `El año debe estar entre 1900 y ${anioMax}.`);
 
   const portada = String(d.cover_url || '').trim();
   if (portada && (portada.length > 500 || !/^https?:\/\/[^\s"'<>]+$/i.test(portada))) {

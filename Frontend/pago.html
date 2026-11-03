@@ -34,22 +34,22 @@
             <div class="field-grid">
               <div class="field">
                 <label for="contacto">Nombre de contacto</label>
-                <input id="contacto" autocomplete="name" />
+                <input id="contacto" maxlength="100" autocomplete="name" />
               </div>
               <div class="field">
                 <label for="tel">Teléfono de contacto</label>
-                <input id="tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10 dígitos" />
+                <input id="tel" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10 dígitos" />
               </div>
             </div>
             <div id="campos-envio" hidden>
               <div class="field">
                 <label for="direccion">Calle y número</label>
-                <input id="direccion" placeholder="Calle Hidalgo 245" />
+                <input id="direccion" maxlength="120" placeholder="Calle Hidalgo 245" />
               </div>
               <div class="field-grid">
                 <div class="field">
                   <label for="colonia">Colonia</label>
-                  <input id="colonia" placeholder="Centro" />
+                  <input id="colonia" maxlength="80" placeholder="Centro" />
                 </div>
                 <div class="field">
                   <label for="cp">Código postal</label>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="field">
                   <label for="ciudad">Ciudad</label>
-                  <input id="ciudad" placeholder="Bahía de Banderas" />
+                  <input id="ciudad" maxlength="80" placeholder="Bahía de Banderas" />
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@
             <div id="campos-tarjeta">
               <div class="field">
                 <label for="titular">Nombre en la tarjeta</label>
-                <input id="titular" autocomplete="cc-name" placeholder="Como aparece en la tarjeta" />
+                <input id="titular" maxlength="100" autocomplete="cc-name" placeholder="Como aparece en la tarjeta" />
               </div>
               <div class="field">
                 <label for="tarjeta">Número de tarjeta</label>

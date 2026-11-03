@@ -1,13 +1,19 @@
 // Crea una cuenta de administrador.
-// Uso:  npm run admin -- correo@ejemplo.com ContraseñaDeAlMenos8 Nombre Apellido
+// Uso:  npm run admin -- correo@ejemplo.com Contraseña1 Nombre Apellido
 const bcrypt = require('bcryptjs');
 const usuarioModelo = require('../modelos/usuario.modelo');
 
 const [email, password, ...resto] = process.argv.slice(2);
 const nombre = resto.join(' ') || 'Administrador';
 
-if (!email || !password || password.length < 8) {
-  console.log('Uso: npm run admin -- correo contraseña(mínimo 8 caracteres) [nombre]');
+if (!email || !password) {
+  console.log('Uso: npm run admin -- correo contraseña [nombre]');
+  process.exit(1);
+}
+try {
+  usuarioModelo.validarContrasena(password); // la misma regla que en el registro
+} catch (error) {
+  console.log(error.message);
   process.exit(1);
 }
 
